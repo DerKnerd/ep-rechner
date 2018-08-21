@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PokémonDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PokémonDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="False" msprop:Generator_DataSetName="PokémonDataSet" msprop:Generator_UserDSName="PokémonDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Pokémon" msprop:Generator_TableClassName="PokémonDataTable" msprop:Generator_TableVarName="tablePokémon" msprop:Generator_TablePropName="Pokémon" msprop:Generator_RowDeletingName="PokémonRowDeleting" msprop:Generator_UserTableName="Pokémon" msprop:Generator_RowChangingName="PokémonRowChanging" msprop:Generator_RowEvHandlerName="PokémonRowChangeEventHandler" msprop:Generator_RowDeletedName="PokémonRowDeleted" msprop:Generator_RowEvArgName="PokémonRowChangeEvent" msprop:Generator_RowChangedName="PokémonRowChanged" msprop:Generator_RowClassName="PokémonRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nummer" msprop:Generator_ColumnVarNameInTable="columnNummer" msprop:Generator_ColumnPropNameInRow="Nummer" msprop:Generator_ColumnPropNameInTable="NummerColumn" msprop:Generator_UserColumnName="Nummer" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Basiswert" msprop:Generator_ColumnVarNameInTable="columnBasiswert" msprop:Generator_ColumnPropNameInRow="Basiswert" msprop:Generator_ColumnPropNameInTable="BasiswertColumn" msprop:Generator_UserColumnName="Basiswert" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Sprite" msprop:Generator_ColumnVarNameInTable="columnSprite" msprop:Generator_ColumnPropNameInRow="Sprite" msprop:Generator_ColumnPropNameInTable="SpriteColumn" msprop:Generator_UserColumnName="Sprite" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Pokémon" />
+      <xs:field xpath="Nummer" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

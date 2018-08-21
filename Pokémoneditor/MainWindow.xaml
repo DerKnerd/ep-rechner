@@ -1,0 +1,87 @@
+﻿<Window x:Class="Pokémoneditor.MainWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Title="Pokémoneditor" Height="298" Width="520" Loaded="Window_Loaded" Icon="/Pokémoneditor;component/icon.ico" xmlns:my="clr-namespace:Pokémoneditor" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="232*" />
+        </Grid.RowDefinitions>
+        <ToolBar Name="toolbar">
+            <Button Command="New" ToolTip="Neue .poké-Datei">
+                <Image Source="/Pokémoneditor;component/NewDocumentHS.png" />
+            </Button>
+            <Button Command="Open" ToolTip=".poké-Datei öffnen">
+                <Image Source="/Pokémoneditor;component/openHS.png" />
+            </Button>
+            <Button Command="Save" ToolTip=".poké-Datei speichern">
+                <Image Source="/Pokémoneditor;component/saveHS.png" />
+            </Button>
+            <Button Command="SaveAs" ToolTip=".poké-Datei speichern unter">
+                <Image Source="/Pokémoneditor;component/SaveAllHS.png" />
+            </Button>
+            <Separator/>
+            <Button Click="Button2_Click" ToolTip="Neues Pokémon">
+                <Image Name="imgneu" Source="/Pokémoneditor;component/DocumentHS.png" />
+            </Button>
+            <Button Click="Button_Click" Name="add" IsEnabled="False" ToolTip="Pokémon hinzufügen">
+                <Image Name="imgadd" Source="/Pokémoneditor;component/077_AddFile_16x16_72.png" />
+            </Button>
+            <Button Click="delete_Click" ToolTip="Pokémon löschen">
+                <Image Name="imgdel" Source="/Pokémoneditor;component/delete.png" />
+            </Button>
+            <Separator/>
+            <Button Command="Help">
+                <Image Source="/Pokémoneditor;component/109_AllAnnotations_Help_16x16_72.png" />
+            </Button>
+            <Image Width="16" ToolTipService.ShowDuration="6000" Height="16" Source="/Pokémoneditor;component/109_AllAnnotations_Info_16x16_72.png" Stretch="Fill">
+                <Image.ToolTip>
+                    <ToolTip Placement="Bottom">
+                        <TextBlock>
+                            <Run FontWeight="Bold">WICHTIG!!!</Run>
+                            <LineBreak/>
+                            <Run>Um ein neues Pokémon anzulegen müssen</Run>
+                            <LineBreak/>
+                            <Run>Sie auf Neues Pokémon klicken.</Run>
+                            <LineBreak/>
+                            <Run>Sie dürfen auf keinen Fall die TextBoxen editieren.</Run>
+                        </TextBlock>
+                    </ToolTip>
+                </Image.ToolTip>
+            </Image>
+        </ToolBar>
+        <Grid Grid.Row="1" Name="grid1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="92" />
+                <RowDefinition Height="140*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="58*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="2" Name="image1" Stretch="Uniform" Width="140" Height="140" Source="{Binding ElementName=sprite, Path=Text}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Text="Nummer:" VerticalAlignment="Top" Grid.RowSpan="2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,20,0,0" Text="Name:" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,43,0,0" Text="Basiswert:" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="0,66,0,0" Text="Sprite:" VerticalAlignment="Top" />
+            <TextBox Grid.ColumnSpan="2" Height="23" HorizontalAlignment="Left" Margin="55,0,0,0" Name="nummer" VerticalAlignment="Top" Width="120" Text="{Binding Nummer,UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2" />
+            <TextBox Grid.ColumnSpan="2" Height="23" HorizontalAlignment="Left" Margin="55,20,0,0" Name="name" VerticalAlignment="Top" Width="120" Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="55,43,0,0" Name="basiswert" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Text="{Binding Basiswert,UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="55,66,0,0" Name="sprite" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Text="{Binding Sprite,UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="..." Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="35,66,0,0" Name="button1" VerticalAlignment="Top" Width="23" Click="button1_Click" />
+            <ListView Grid.Column="1" Grid.RowSpan="2" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" Name="listView1" Margin="57,14,0,0" SelectionChanged="listView1_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Basiswert" DisplayMemberBinding="{Binding Basiswert}"/>
+                        <GridViewColumn Header="Sprite(Adresse)" DisplayMemberBinding="{Binding Sprite}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock Grid.Column="1" Margin="57,0,0,78" Name="textBlock1" Text="Pokémon in der Liste" />
+        </Grid>
+    </Grid>
+</Window>

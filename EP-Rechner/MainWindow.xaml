@@ -1,0 +1,69 @@
+﻿<Window x:Class="EP_Rechner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EP-Rechner" Height="345" Width="525" Icon="/EP-Rechner;component/icon.ico" BorderBrush="#FFDE5353">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="282*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="207*" />
+                <RowDefinition Height="23*" />
+                <RowDefinition Height="26*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="353*" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <ListView GridViewColumnHeader.Click="gvcheader_Click" Name="listView1" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Nummer}" Header="Nummer"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Basiswert}" Header="Basiswert"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Right" Width="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="47*" />
+                    <RowDefinition Height="102*" />
+                    <RowDefinition Height="81*" />
+                </Grid.RowDefinitions>
+                <Image Name="image1" Stretch="Uniform" Grid.Row="1" Source="{Binding Sprite}" VerticalAlignment="Bottom" />
+                <TextBlock Name="textBlock1" Grid.Row="2" VerticalAlignment="Bottom">
+                <Run Text="Nummer:"/>
+                <LineBreak/>
+                <Run Text="{Binding Nummer}"/>
+                <LineBreak/>
+                <Run>Basiswert:</Run>
+                <LineBreak/>
+                <Run Text="{Binding Basiswert}" Name="basiswert"/>
+                <LineBreak/>
+                <Run>Level</Run>
+                <LineBreak/>
+                <Run Text="{Binding Path=Value, ElementName=slider1, UpdateSourceTrigger=PropertyChanged}"/>
+                </TextBlock>
+                <TextBlock Name="textBlock2" Text="{Binding Name}" FontSize="24" VerticalAlignment="Bottom" />
+            </Grid>
+            <Slider Name="slider1" Maximum="100" Grid.Row="3" TickPlacement="BottomRight" IsSnapToTickEnabled="True" ValueChanged="slider1_ValueChanged" Value="0" VerticalAlignment="Bottom" />
+            <TextBlock Grid.Row="2" Name="textBlock3" VerticalAlignment="Bottom">
+            <Run>Ihr Pokémon hat</Run>
+            <Run Name="runep" Text="0"/>
+            <Run>EP gewonnen.</Run>
+            </TextBlock>
+            <CheckBox Content="Glücksei" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Name="glücksei" VerticalAlignment="Bottom" Checked="items_werte_Checked" Unchecked="items_werte_Unchecked" Margin="0,0,95,0" />
+            <CheckBox Content="Trainerkampf" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Name="trainerkampf" VerticalAlignment="Bottom" Checked="items_werte_Checked" Unchecked="items_werte_Unchecked" />
+            <CheckBox Content="getauschtes Pokémon" Grid.Column="1" Grid.Row="3" Margin="0,0,0,12" Name="getauscht" Checked="items_werte_Checked" Unchecked="items_werte_Unchecked" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" />
+            <ToolBar Grid.ColumnSpan="2" Height="26" VerticalAlignment="Top">
+                <Button Click="Button_Click">
+                    <Image Source="/EP-Rechner;component/openHS.png" />
+                </Button>
+            </ToolBar>
+        </Grid>
+        <TextBlock Text="Pokémon EP Berechnungsprogramm" FontSize="18" Margin="0,0,150,0" Height="24" VerticalAlignment="Top" />
+    </Grid>
+</Window>
